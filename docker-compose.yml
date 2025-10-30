@@ -57,8 +57,20 @@ services:
     networks:
       - shortener-network
 
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "9000:9000" # Веб-интерфейс
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Доступ к Docker API
+      - portainer_data:/data
+    restart: always
+
+
 volumes:
   postgres_data:
+  portainer_data:
 
 networks:
   shortener-network:
