@@ -1,0 +1,22 @@
+image: python:3.12
+
+
+stages:
+  - build
+  - deploy
+
+Build:
+  stage: build
+  script:
+    - ls -la
+    - echo "start build"
+    - docker-compose build
+    - echo "build success"
+
+Deploy:
+  stage: deploy
+  script:
+    - ls -la
+    - echo "start deploy"
+    - docker-compose up -d
+    - echo "deploy success"

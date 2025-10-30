@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   app:
+    container_name: shortener
     build: .
     ports:
       - "8080:8080"
@@ -17,6 +18,7 @@ services:
       - shortener-network
 
   db:
+    container_name: db_shortener
     image: postgres:15-alpine
     environment:
       - POSTGRES_DB=url_shortener
@@ -29,6 +31,21 @@ services:
     networks:
       - shortener-network
 
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_shortener
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com # Email для входа в pgAdmin
+      PGADMIN_DEFAULT_PASSWORD: password # Пароль для входа в pgAdmin
+    ports:
+      - "5050:5050" # Порт для доступа к веб-интерфейсу pgAdmin
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - shortener-network
+
   nginx:
     image: nginx:alpine
     ports:
@@ -38,6 +55,8 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf # Копируем конфигурацию Nginx
       - /etc/letsencrypt:/etc/letsencrypt # Сохраняем сертификаты SSL
     restart: always # Перезагружаем при каждом падении контейнера
+    networks:
+      - shortener-network
 
 volumes:
   postgres_data:
