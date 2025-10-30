@@ -22,7 +22,7 @@ services:
     image: postgres:15-alpine
     environment:
       - POSTGRES_DB=url_shortener
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=postgres 
       - POSTGRES_PASSWORD=$ZLB9MEmql0G*fQ4
     ports:
       - "5433:5432"
@@ -41,7 +41,7 @@ services:
     ports:
       - "5050:5050" # Порт для доступа к веб-интерфейсу pgAdmin
     depends_on:
-      - postgres
+      - db
     restart: always
     networks:
       - shortener-network
