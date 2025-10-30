@@ -2,25 +2,16 @@ image: python:3.12
 
 
 stages:
-  - build
+  - build_and_deploy
   - deploy
 
-Build:
-  stage: build
-  script:
-    - ls -la
-    - echo "start build"
-    - docker-compose build
-    - echo "build success"
-  tags:
-    - chat-runners
 
 Deploy:
-  stage: deploy
+  stage: build_and_deploy
   script:
     - ls -la
     - echo "start deploy"
-    - docker-compose up -d
+    - docker-compose up --build -d
     - echo "deploy success"
   tags:
     - chat-runners
