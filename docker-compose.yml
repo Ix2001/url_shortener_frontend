@@ -23,7 +23,7 @@ services:
     environment:
       - POSTGRES_DB=url_shortener
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_PASSWORD=$ZLB9MEmql0G*fQ4
     ports:
       - "5433:5432"
     volumes:
@@ -36,8 +36,8 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin_shortener
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com # Email для входа в pgAdmin
-      PGADMIN_DEFAULT_PASSWORD: password # Пароль для входа в pgAdmin
+      PGADMIN_DEFAULT_EMAIL: admin@alabuga.ru # Email для входа в pgAdmin
+      PGADMIN_DEFAULT_PASSWORD: V1KOyk~KEALjIXJH # Пароль для входа в pgAdmin
     ports:
       - "5050:5050" # Порт для доступа к веб-интерфейсу pgAdmin
     depends_on:
