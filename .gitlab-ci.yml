@@ -12,6 +12,8 @@ Build:
     - echo "start build"
     - docker-compose build
     - echo "build success"
+  tags:
+    - chat-runners
 
 Deploy:
   stage: deploy
@@ -20,3 +22,5 @@ Deploy:
     - echo "start deploy"
     - docker-compose up -d
     - echo "deploy success"
+  tags:
+    - chat-runners
