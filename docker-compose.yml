@@ -14,6 +14,7 @@ services:
       - db
     networks:
       - shortener-network
+    restart: always # Перезагружаем при каждом падении контейнера
 
   db:
     container_name: db_shortener
