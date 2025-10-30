@@ -7,7 +7,7 @@ services:
     environment:
       - DB_URL=jdbc:postgresql://db:5432/url_shortener
       - DB_USERNAME=postgres
-      - DB_USERNAME=ZLB9MEmql0G
+      - DB_PASSWORD=ZLB9MEmql0G
       # - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=https://auth.dev.hr.alabuga.space/realms/Alabuga
       # - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI=https://auth.dev.hr.alabuga.space/realms/Alabuga/protocol/openid-connect/certs
     depends_on:
