@@ -29,6 +29,16 @@ services:
     networks:
       - shortener-network
 
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Копируем конфигурацию Nginx
+      - /etc/letsencrypt:/etc/letsencrypt # Сохраняем сертификаты SSL
+    restart: always # Перезагружаем при каждом падении контейнера
+
 volumes:
   postgres_data:
 
