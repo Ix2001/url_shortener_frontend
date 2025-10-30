@@ -23,7 +23,7 @@ services:
       - POSTGRES_USER=postgres 
       - POSTGRES_PASSWORD=$ZLB9MEmql0G*fQ4
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
