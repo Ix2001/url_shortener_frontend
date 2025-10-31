@@ -29,7 +29,7 @@ public class ShortLinkApi {
     private final UserService userService;
     // private final ShortLinkMapper shortLinkMapper;
 
-    @PostMapping("/shorten")
+    @PostMapping("/api/shorten")
     @Operation(summary = "Создать короткую ссылку", description = "Создает короткую ссылку для указанного URL")
     public ResponseEntity<CreateShortLinkResponse> create(@Valid @RequestBody CreateShortLinkRequest request,
                                                           @AuthenticationPrincipal Jwt jwt) {
@@ -44,7 +44,7 @@ public class ShortLinkApi {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/my-links")
+    @GetMapping("/api/my-links")
     @Operation(summary = "Получить мои ссылки", description = "Возвращает список всех коротких ссылок текущего пользователя со статистикой")
     public ResponseEntity<UserResponseWithLinksDto> myLinks(@AuthenticationPrincipal Jwt jwt) {
         UserAccount user = userService.loadOrCreate(jwt);
@@ -65,7 +65,7 @@ public class ShortLinkApi {
     }
 
 
-    @GetMapping("/stats/{code}")
+    @GetMapping("/api/stats/{code}")
     @Operation(summary = "Статистика ссылки", description = "Возвращает статистику по указанной короткой ссылке (только для владельца)")
     public ResponseEntity<ShortLinkStatsDto> stats(@PathVariable String code,
                                                    @AuthenticationPrincipal Jwt jwt) {
@@ -80,7 +80,7 @@ public class ShortLinkApi {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/links/{code}")
+    @DeleteMapping("/api/links/{code}")
     @Operation(summary = "Удалить ссылку", description = "Удаляет короткую ссылку (только для владельца)")
     public ResponseEntity<DeleteLinkResponse> deleteLink(@PathVariable String code,
                                                          @AuthenticationPrincipal Jwt jwt) {

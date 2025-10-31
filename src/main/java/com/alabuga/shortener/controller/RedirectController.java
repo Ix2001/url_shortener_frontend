@@ -18,7 +18,7 @@ public class RedirectController {
 
     private final ShortLinkService shortLinkService;
 
-    @GetMapping("/{code}")
+    @GetMapping("/api/{code}")
     public void redirect(@PathVariable String code, HttpServletResponse response) throws IOException {
         Optional<ShortLink> linkOpt = shortLinkService.findByCode(code);
         if (linkOpt.isEmpty()) {
